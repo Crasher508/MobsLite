@@ -19,19 +19,19 @@ class MobsLoader extends PluginBase
         $this->registerCommands();
     }
 
-    protected function registerEntities(): void
+    private function registerEntities(): void
     {
         $registration = new EntityClassMapper();
         $registration->registerEntities();
     }
 
-    public function registerTask(): void
+    private function registerTask(): void
     {
         $task = new SpawnTask($this);
         $this->getScheduler()->scheduleRepeatingTask($task, 300);
     }
 
-    public function registerCommands(): void
+    private function registerCommands(): void
     {
         $commands = [
             killCommand::class, listCommand::class, summonCommand::class
