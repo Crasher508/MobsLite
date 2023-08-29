@@ -12,14 +12,14 @@ use pocketmine\plugin\PluginBase;
 
 class MobsLoader extends PluginBase
 {
-    public function onEnable(): void
+    protected function onEnable(): void
     {
         $this->registerEntities();
         $this->registerTask();
         $this->registerCommands();
     }
 
-    public function registerEntities(): void
+    protected function registerEntities(): void
     {
         $registration = new EntityClassMapper();
         $registration->registerEntities();
@@ -34,14 +34,12 @@ class MobsLoader extends PluginBase
     public function registerCommands(): void
     {
         $commands = [
-            "kill" => new killCommand($this),
-            "summon" => new summonCommand($this),
-            "list" => new listCommand($this)
+            killCommand::class, listCommand::class, summonCommand::class
         ];
 
         $commandMap = $this->getServer()->getCommandMap();
-        foreach ($commands as $prefix => $class) {
-            $commandMap->register($prefix, $class);
+        foreach ($commands as $class) {
+            $commandMap->register("MobsLite", new $class($this));
         }
     }
 }
