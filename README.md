@@ -35,4 +35,5 @@ We welcome contributions from the community to enhance and improve MobsLite furt
 
 MobsLite is licensed under the [MIT License](LICENSE). Feel free to use and modify this plugin for your own server.
 
-[Minecraft icons created by Alfredo Creates - Flaticon](https://www.flaticon.com/free-icons/minecraft)
+Icon:
+Minecraft texture created by Mojang Studios - Microsoft
