@@ -4,7 +4,7 @@ description: "A simple and lightweight Mobs plugin"
 author: "BambooPM, based on Mobs by tgwaste"
 
 api: 5.0.0
-main: bamboopm\MobsLite
+main: bamboopm\MobsLite\MobsLoader
 
 permissions:
   mobslite.kill:
