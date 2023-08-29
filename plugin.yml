@@ -1,0 +1,18 @@
+name: MobsLite
+version: 1.0.0-beta
+description: "A simple and lightweight Mobs plugin"
+author: "BambooPM, based on Mobs by tgwaste"
+
+api: 5.0.0
+main: bamboopm\MobsLite
+
+permissions:
+  mobslite.kill:
+    description: "/mkill"
+    default: op
+  mobslite.summon:
+    description: "/msummon"
+    default: op
+  mobslite.list:
+    description: "/mlist"
+    default: op
