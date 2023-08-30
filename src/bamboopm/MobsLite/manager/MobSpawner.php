@@ -21,7 +21,7 @@ class MobSpawner
 
     public function __construct(private MobsLoader $plugin)
     {
-        $this->biomes = new BiomeMapper();
+        $this->biomes = new BiomeMapper($this->plugin);
         $this->coords = new MobMovementLogic();
         $this->registration = new EntityClassMapper();
         $this->utility = new MobUtility();
@@ -122,7 +122,6 @@ class MobSpawner
 
     public function isAllowedSpawn(string $worldName): bool
     {
-        $allowedWorlds = ["overworld", "nether", "the_end"];
-        return in_array($worldName, $allowedWorlds);
+        return in_array($worldName, $this->plugin->getFarmWorldNames());
     }
 }

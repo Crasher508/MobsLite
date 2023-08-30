@@ -1,0 +1,6 @@
+#name of overworld
+overworld: overworld
+#name of nether world
+nether: nether
+#Name of end world
+end: the_end
