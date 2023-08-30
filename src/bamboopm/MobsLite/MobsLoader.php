@@ -12,11 +12,18 @@ use pocketmine\plugin\PluginBase;
 
 class MobsLoader extends PluginBase
 {
+
+	private string $overworldName = "";
+	private string $netherName = "";
+	private string $endName = "";
+
     protected function onEnable(): void
     {
+		$this->saveDefaultConfig();
         $this->registerEntities();
         $this->registerTask();
         $this->registerCommands();
+		$this->loadConfig();
     }
 
     private function registerEntities(): void
@@ -42,4 +49,27 @@ class MobsLoader extends PluginBase
             $commandMap->register("MobsLite", new $class($this));
         }
     }
+
+	public function loadConfig(): void
+	{
+		$config = $this->getConfig();
+		$this->overworldName = $config->get("overworld", "");
+		$this->netherName = $config->get("nether", "");
+		$this->endName = $config->get("end", "");
+	}
+
+	public function getOverworldName(): string
+	{
+		return $this->overworldName;
+	}
+
+	public function getNetherName(): string
+	{
+		return $this->netherName;
+	}
+
+	public function getEndName(): string
+	{
+		return $this->endName;
+	}
 }

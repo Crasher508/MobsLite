@@ -28,7 +28,7 @@ class SpawnTask extends Task
     {
         $worlds = $this->plugin->getServer()->getWorldManager()->getWorlds();
         foreach ($worlds as $world) {
-            if ($world->getFolderName() === "overworld" or $world->getFolderName() === "nether" or $world->getFolderName() === "the_end") {
+            if ($world->getFolderName() === $this->plugin->getOverworldName() or $world->getFolderName() === $this->plugin->getNetherName() or $world->getFolderName() === $this->plugin->getEndName()) {
                 if ($world->isLoaded()) {
                     $entities = $world->getEntities();
                     foreach ($entities as $entity) {

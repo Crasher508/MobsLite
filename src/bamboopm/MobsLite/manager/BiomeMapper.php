@@ -5,8 +5,13 @@ declare(strict_types=1);
 namespace bamboopm\MobsLite\manager;
 
 
+use bamboopm\MobsLite\MobsLoader;
+
 class BiomeMapper
 {
+
+	public function __construct(private readonly MobsLoader $plugin) {}
+
     private array $biomeMobs = [
         "PLAINS" => ["Bee", "Chicken", "Cow", "Donkey", "Enderman", "Horse", "Mule", "Pig", "Rabbit", "Sheep", "SkeletonHorse", "TraderLlama"],
         "FOREST" => ["Allay", "Bee", "Chicken", "Cow", "Enderman", "Pig", "Pillager", "Rabbit", "Sheep", "Wolf"],
@@ -44,11 +49,11 @@ class BiomeMapper
         $biome = strtoupper($biome);
 
         if (!array_key_exists($biome, $this->biomeMobs)) {
-            if ($worldName === "overworld") {
+            if ($worldName === $this->plugin->getOverworldName()) {
                 $biome = "PLAINS";
-            } elseif ($worldName === "nether") {
+            } elseif ($worldName === $this->plugin->getNetherName()) {
                 $biome = "HELL";
-            } elseif ($worldName === "the_end") {
+            } elseif ($worldName === $this->plugin->getEndName()) {
                 $biome = "THE END";
             } else {
                 $biome = "PLAINS";
@@ -57,7 +62,7 @@ class BiomeMapper
 
         $mobTable = $this->biomeMobs[$biome];
 
-        if ($isNight and $worldName === "overworld") {
+        if ($isNight and $worldName === $this->plugin->getOverworldName()) {
             return $this->biomeMobs["NIGHT MOBS"];
         }
 
