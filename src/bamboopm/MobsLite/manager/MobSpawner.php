@@ -44,7 +44,7 @@ class MobSpawner
 
             foreach ($positions as $pos) {
                 $biome = $world->getBiome((int)$pos->x, (int)$pos->y, (int)$pos->z)->getName();
-                $isNight = $this->utility->isDayTime($world);
+                $isNight = !$this->utility->isDayTime($world);
                 $mobtable = $this->biomes->getMobsForBiome($world->getFolderName(), $biome, $isNight);
 
                 foreach ($mobtable as $mobname) {
